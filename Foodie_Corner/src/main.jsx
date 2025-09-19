@@ -10,6 +10,11 @@ const GlobalStyle = createGlobalStyle`
   margin:0 ;
   padding: 0;
 }
+body{
+background: rgba(50, 51, 52, 1);
+  color: white;
+  min-width: 100vh;
+}
 `;
 createRoot(document.getElementById("root")).render(
   <StrictMode>

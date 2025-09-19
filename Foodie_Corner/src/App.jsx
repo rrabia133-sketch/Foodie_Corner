@@ -85,7 +85,7 @@ const FilterContainer = styled.section`
   justify-content: center;
   gap: 20px;
 `;
-const Button = styled.button`
+export const Button = styled.button`
   background-color: red;
   border-radius: 5px;
   padding: 6px 12px;

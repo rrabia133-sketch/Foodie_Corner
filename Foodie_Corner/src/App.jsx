@@ -2,17 +2,20 @@ import { styled } from "styled-components";
 import Fooddata from "./Food_data.json";
 import { useState, useEffect } from "react";
 import SearchResult from "./Component/SearchResult";
+import Footer from "./Component/Footer";
 
 function App() {
   const [data, setdata] = useState();
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState();
+  const [filteredData, setFilteredData] = useState();
 
   useEffect(() => {
     const FetchFoodData = async () => {
       try {
         setloading(false);
         setdata(Fooddata);
+        setFilteredData(Fooddata);
       } catch (error) {
         seterror("unable data come");
       }
@@ -21,9 +24,34 @@ function App() {
     FetchFoodData();
   }, []);
 
+  // search function
+  const searchFood = (e) => {
+    const searchValue = e.target.value;
+    if (searchValue === "") {
+      setFilteredData(data);
+    } else {
+      const filtered = data?.filter((food) =>
+        food.name.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setFilteredData(filtered);
+    }
+  };
+
+  // filter by category
+  const filterFood = (type) => {
+    if (type === "ALL") {
+      setFilteredData(data);
+    } else {
+      const filtered = data?.filter((food) => 
+        food.type.toLowerCase() === type.toLowerCase()
+      );
+      setFilteredData(filtered);
+    }
+  };
+
   if (error) return <div>{error}</div>;
   if (loading) return <div>loading.....</div>;
-  
+
   return (
     <>
       <Container>
@@ -32,17 +60,18 @@ function App() {
             <img src="/images/logo.png" alt="logo" />
           </div>
           <div className="search">
-            <input placeholder="Search Here..." />
+            <input onChange={searchFood} placeholder="Search Here..." />
           </div>
         </TopContainer>
         <FilterContainer>
-          <Button>ALL</Button>
-          <Button>Breakfast</Button>
-          <Button>Lunch</Button>
-          <Button>Dinner</Button>
+          <Button onClick={() => filterFood("ALL")}>ALL</Button>
+          <Button onClick={() => filterFood("Breakfast")}>Breakfast</Button>
+          <Button onClick={() => filterFood("lunch")}>Lunch</Button>
+          <Button onClick={() => filterFood("Dinner")}>Dinner</Button>
         </FilterContainer>
       </Container>
-      <SearchResult data={data} />
+      <SearchResult data={filteredData} />
+      <Footer />
     </>
   );
 }

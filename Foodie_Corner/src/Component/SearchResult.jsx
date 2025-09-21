@@ -7,22 +7,26 @@ export default function SearchResult({ data }) {
     <div>
       <FoodContainer>
         <Foodcards>
-          {data?.map((foodData, index) => {
-            return (
-              <Card key={index}>
-                <div className="food_image">
-                  <img src={foodData.image} alt={foodData.name} />
-                </div>
-                <div className="food_info">
-                  <div className="info">
-                    <h3>{foodData.name}</h3>
-                    <p>{foodData.text}</p>
+          {data?.length === 0 ? (
+            <NoDataFound>No Food Found</NoDataFound>
+          ) : (
+            data?.map((foodData, index) => {
+              return (
+                <Card key={index}>
+                  <div className="food_image">
+                    <img src={foodData.image} alt={foodData.name} />
                   </div>
-                  <Button> ${foodData.price.toFixed(2)}</Button>
-                </div>
-              </Card>
-            );
-          })}
+                  <div className="food_info">
+                    <div className="info">
+                      <h3>{foodData.name}</h3>
+                      <p>{foodData.text}</p>
+                    </div>
+                    <Button> ${foodData.price.toFixed(2)}</Button>
+                  </div>
+                </Card>
+              );
+            })
+          )}
         </Foodcards>
       </FoodContainer>
     </div>
@@ -55,6 +59,20 @@ const Foodcards = styled.div`
   @media (max-width: 480px) {
     padding: 10px 5px;
     gap: 12px;
+  }
+`;
+
+const NoDataFound = styled.div`
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  padding: 50px;
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    padding: 30px;
   }
 `;
 

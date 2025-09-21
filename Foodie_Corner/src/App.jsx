@@ -56,19 +56,28 @@ function App() {
     <AppContainer>
       <Header>
         <TopContainer>
-          <div className="logo">
-            <img src="/images/logo.png" alt="logo" />
-          </div>
+          <LogoText>
+            <span>F</span>
+            <span>o</span>
+            <span>o</span>
+            <span>d</span>
+            <span>y</span>
+            <span> </span>
+            <span>Z</span>
+            <span>o</span>
+            <span>n</span>
+            <span>e</span>
+          </LogoText>
+          <FilterContainer>
+            <Button onClick={() => filterFood("ALL")}>ALL</Button>
+            <Button onClick={() => filterFood("Breakfast")}>Breakfast</Button>
+            <Button onClick={() => filterFood("lunch")}>Lunch</Button>
+            <Button onClick={() => filterFood("Dinner")}>Dinner</Button>
+          </FilterContainer>
           <div className="search">
             <input onChange={searchFood} placeholder="Search Here..." />
           </div>
         </TopContainer>
-        <FilterContainer>
-          <Button onClick={() => filterFood("ALL")}>ALL</Button>
-          <Button onClick={() => filterFood("Breakfast")}>Breakfast</Button>
-          <Button onClick={() => filterFood("lunch")}>Lunch</Button>
-          <Button onClick={() => filterFood("Dinner")}>Dinner</Button>
-        </FilterContainer>
       </Header>
       <MainContent>
         <SearchResult data={filteredData} />
@@ -109,6 +118,64 @@ const MainContent = styled.div`
   min-height: 0;
 `;
 
+const LogoText = styled.div`
+  font-size: 32px;
+  font-weight: bold;
+  color: red;
+  font-family: 'Arial', sans-serif;
+
+  span {
+    display: inline-block;
+    animation: bounce 2s infinite;
+    animation-delay: calc(0.1s * var(--i));
+  }
+
+  span:nth-child(1) { --i: 1; }
+  span:nth-child(2) { --i: 2; }
+  span:nth-child(3) { --i: 3; }
+  span:nth-child(4) { --i: 4; }
+  span:nth-child(5) { --i: 5; }
+  span:nth-child(6) { --i: 6; }
+  span:nth-child(7) { --i: 7; }
+  span:nth-child(8) { --i: 8; }
+  span:nth-child(9) { --i: 9; }
+  span:nth-child(10) { --i: 10; }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  &:hover span {
+    animation: rainbow 1s infinite;
+  }
+
+  @keyframes rainbow {
+    0% { color: red; }
+    16% { color: orange; }
+    33% { color: yellow; }
+    50% { color: green; }
+    66% { color: blue; }
+    83% { color: indigo; }
+    100% { color: red; }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
+`;
+
 const TopContainer = styled.section`
   display: flex;
   justify-content: space-between;
@@ -127,17 +194,8 @@ const TopContainer = styled.section`
     padding: 8px 0;
   }
 
-  .logo img {
-    height: 50px;
-    width: auto;
-
-    @media (max-width: 480px) {
-      height: 40px;
-    }
-  }
-
   .search input {
-    width: 300px;
+    width: 250px;
     height: 35px;
     padding: 0 15px;
     border: 1px solid red;
@@ -151,28 +209,29 @@ const TopContainer = styled.section`
     }
 
     @media (max-width: 768px) {
-      width: 280px;
+      width: 220px;
     }
 
     @media (max-width: 480px) {
       width: 100%;
-      max-width: 250px;
+      max-width: 200px;
       height: 32px;
       font-size: 14px;
     }
   }
 `;
 
-const FilterContainer = styled.section`
+const FilterContainer = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding-bottom: 15px;
+  gap: 10px;
   flex-wrap: wrap;
 
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+
   @media (max-width: 480px) {
-    gap: 8px;
-    padding-bottom: 10px;
+    gap: 6px;
   }
 `;
 
@@ -181,8 +240,8 @@ export const Button = styled.button`
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 8px 16px;
-  font-size: 14px;
+  padding: 8px 12px;
+  font-size: 13px;
   cursor: pointer;
   transition: background-color 0.2s;
 
@@ -190,13 +249,13 @@ export const Button = styled.button`
     background-color: darkred;
   }
 
-  @media (max-width: 480px) {
-    padding: 6px 12px;
+  @media (max-width: 768px) {
+    padding: 6px 10px;
     font-size: 12px;
   }
 
-  @media (max-width: 360px) {
-    padding: 5px 10px;
+  @media (max-width: 480px) {
+    padding: 5px 8px;
     font-size: 11px;
   }
 `;

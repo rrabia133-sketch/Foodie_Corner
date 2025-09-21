@@ -148,7 +148,7 @@ const Card = styled.div`
   h3 {
     font-size: 16px;
     font-weight: bold;
-    color: black;
+
     margin-bottom: 6px;
     line-height: 1.2;
 

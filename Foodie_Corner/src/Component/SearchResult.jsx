@@ -4,61 +4,58 @@ import { Button } from "../App";
 
 export default function SearchResult({ data }) {
   return (
-    <div>
-      <FoodContainer>
-        <Foodcards>
-          {data?.length === 0 ? (
-            <NoDataFound>No Food Found</NoDataFound>
-          ) : (
-            data?.map((foodData, index) => {
-              return (
-                <Card key={index}>
-                  <div className="food_image">
-                    <img src={foodData.image} alt={foodData.name} />
+    <FoodContainer>
+      <Foodcards>
+        {data?.length === 0 ? (
+          <NoDataFound>No Food Found</NoDataFound>
+        ) : (
+          data?.map((foodData, index) => {
+            return (
+              <Card key={index}>
+                <div className="food_image">
+                  <img src={foodData.image} alt={foodData.name} />
+                </div>
+                <div className="food_info">
+                  <div className="info">
+                    <h3>{foodData.name}</h3>
+                    <p>{foodData.text}</p>
                   </div>
-                  <div className="food_info">
-                    <div className="info">
-                      <h3>{foodData.name}</h3>
-                      <p>{foodData.text}</p>
-                    </div>
-                    <Button> ${foodData.price.toFixed(2)}</Button>
-                  </div>
-                </Card>
-              );
-            })
-          )}
-        </Foodcards>
-      </FoodContainer>
-    </div>
+                  <Button> ${foodData.price.toFixed(2)}</Button>
+                </div>
+              </Card>
+            );
+          })
+        )}
+      </Foodcards>
+    </FoodContainer>
   );
 }
 
 const FoodContainer = styled.section`
   background-image: url("/images/bg.png");
-  min-height: calc(100vh - 200px);
   background-size: cover;
   background-position: center;
-  padding: 20px;
-  width: 100%;
+  height: 100%;
+  padding: 15px;
+  overflow-y: auto;
 `;
 
 const Foodcards = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 0;
+  margin: 79px auto;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 15px 10px;
+    gap: 12px;
+    padding: 0 10px;
   }
 
   @media (max-width: 480px) {
-    padding: 10px 5px;
-    gap: 12px;
+    padding: 0 5px;
+    gap: 10px;
   }
 `;
 
@@ -78,8 +75,8 @@ const NoDataFound = styled.div`
 
 const Card = styled.div`
   width: 100%;
-  max-width: 340px;
-  height: 167px;
+  max-width: 320px;
+  height: 140px;
   margin: 0 auto;
   border: 0.66px solid;
   border-image-source: radial-gradient(
@@ -99,31 +96,31 @@ const Card = styled.div`
   overflow: hidden;
 
   @media (max-width: 480px) {
-    height: 140px;
+    height: 120px;
     max-width: 100%;
   }
 
   @media (max-width: 360px) {
-    height: 120px;
+    height: 110px;
   }
 
   img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 50%;
-    margin: 10px 0 0 20px;
+    margin: 8px 0 0 15px;
     flex-shrink: 0;
 
     @media (max-width: 480px) {
-      width: 80px;
-      height: 80px;
-      margin: 8px 0 0 15px;
+      width: 70px;
+      height: 70px;
+      margin: 6px 0 0 12px;
     }
 
     @media (max-width: 360px) {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       margin: 5px 0 0 10px;
     }
   }
@@ -133,14 +130,14 @@ const Card = styled.div`
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    padding: 15px 20px 15px 15px;
+    padding: 12px 15px 12px 12px;
 
     @media (max-width: 480px) {
-      padding: 10px 15px 10px 10px;
+      padding: 8px 12px 8px 8px;
     }
 
     @media (max-width: 360px) {
-      padding: 8px 12px 8px 8px;
+      padding: 6px 10px 6px 6px;
     }
   }
 
@@ -149,38 +146,37 @@ const Card = styled.div`
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: black;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     line-height: 1.2;
 
     @media (max-width: 480px) {
-      font-size: 16px;
-      margin-bottom: 6px;
+      font-size: 14px;
+      margin-bottom: 4px;
     }
 
     @media (max-width: 360px) {
-      font-size: 14px;
-      margin-bottom: 4px;
+      font-size: 13px;
+      margin-bottom: 3px;
     }
   }
 
   p {
-    font-size: 14px;
-    color: #333;
-    line-height: 1.3;
-    margin-bottom: 10px;
+    font-size: 12px;
     color: white;
+    line-height: 1.3;
+    margin-bottom: 8px;
 
     @media (max-width: 480px) {
-      font-size: 12px;
-      margin-bottom: 8px;
+      font-size: 11px;
+      margin-bottom: 6px;
     }
 
     @media (max-width: 360px) {
-      font-size: 11px;
-      margin-bottom: 6px;
+      font-size: 10px;
+      margin-bottom: 4px;
     }
   }
 `;

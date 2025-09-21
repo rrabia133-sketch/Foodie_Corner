@@ -53,8 +53,8 @@ function App() {
   if (loading) return <div>loading.....</div>;
 
   return (
-    <>
-      <Container>
+    <AppContainer>
+      <Header>
         <TopContainer>
           <div className="logo">
             <img src="/images/logo.png" alt="logo" />
@@ -69,16 +69,26 @@ function App() {
           <Button onClick={() => filterFood("lunch")}>Lunch</Button>
           <Button onClick={() => filterFood("Dinner")}>Dinner</Button>
         </FilterContainer>
-      </Container>
-      <SearchResult data={filteredData} />
+      </Header>
+      <MainContent>
+        <SearchResult data={filteredData} />
+      </MainContent>
       <Footer />
-    </>
+    </AppContainer>
   );
 }
 
 export default App;
 
-const Container = styled.div`
+const AppContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+const Header = styled.div`
+  flex-shrink: 0;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -93,36 +103,42 @@ const Container = styled.div`
   }
 `;
 
+const MainContent = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+`;
+
 const TopContainer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  min-height: 100px;
+  padding: 15px 0;
+  min-height: 80px;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 20px;
-    padding: 15px 0;
-  }
-
-  @media (max-width: 480px) {
     gap: 15px;
     padding: 10px 0;
   }
 
+  @media (max-width: 480px) {
+    gap: 10px;
+    padding: 8px 0;
+  }
+
   .logo img {
-    height: 60px;
+    height: 50px;
     width: auto;
 
     @media (max-width: 480px) {
-      height: 50px;
+      height: 40px;
     }
   }
 
   .search input {
     width: 300px;
-    height: 40px;
+    height: 35px;
     padding: 0 15px;
     border: 1px solid red;
     border-radius: 5px;
@@ -141,7 +157,7 @@ const TopContainer = styled.section`
     @media (max-width: 480px) {
       width: 100%;
       max-width: 250px;
-      height: 35px;
+      height: 32px;
       font-size: 14px;
     }
   }
@@ -150,13 +166,13 @@ const TopContainer = styled.section`
 const FilterContainer = styled.section`
   display: flex;
   justify-content: center;
-  gap: 20px;
-  padding-bottom: 20px;
+  gap: 15px;
+  padding-bottom: 15px;
   flex-wrap: wrap;
 
   @media (max-width: 480px) {
-    gap: 10px;
-    padding-bottom: 15px;
+    gap: 8px;
+    padding-bottom: 10px;
   }
 `;
 
@@ -165,7 +181,7 @@ export const Button = styled.button`
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 8px 16px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -175,12 +191,12 @@ export const Button = styled.button`
   }
 
   @media (max-width: 480px) {
-    padding: 8px 16px;
-    font-size: 13px;
+    padding: 6px 12px;
+    font-size: 12px;
   }
 
   @media (max-width: 360px) {
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 5px 10px;
+    font-size: 11px;
   }
 `;

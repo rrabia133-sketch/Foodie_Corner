@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-
+import Fooddata from "./Food_data.json";
 import logo from "./images/logo.png";
 import { useState, useEffect } from "react";
 import SearchResult from "./Component/SearchResult";
@@ -7,31 +7,23 @@ function App() {
   const [data, setdata] = useState();
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState();
-  const BASE_URL = "https://68a19d936f8c17b8f5da4b51.mockapi.io/demi";
+  // const BASE_URL = "https://68a19d936f8c17b8f5da4b51.mockapi.io/demi";
 
   useEffect(() => {
     const FetchFoodData = async () => {
       try {
-        const response = await fetch(BASE_URL);
-        const jsonData = await response.json();
+        // const response = await fetch(BASE_URL);
+        // const jsonData = await response.json();
         setloading(false);
 
-        setdata(jsonData);
+        setdata(Fooddata);
       } catch (error) {
         seterror("unable data come");
       }
     };
-    console.log(data);
+    console.log(Fooddata);
     FetchFoodData();
   }, []);
-
-  // const temp =[{
-  //   name: "name 1",
-  //    price: 65,
-  //     text: "text 1",
-  //      image: "image 1",
-  //       type: "type 1",
-  //        id: "1"},…]
 
   if (error) return <div>{error}</div>;
   if (loading) return <div>loading.....</div>;
@@ -54,6 +46,7 @@ function App() {
         </FilterContainer>
         <SearchResult data={data} />
       </Container>
+      <SearchResult data={data} />
     </>
   );
 }

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "BURGER",
+    "price": 65,
+    "text": "burgert he baui ye.",
+    "image": "/images/burger.jpg",
+    "type": "lunch",
+    "id": "1"
+  },
+  {
+    "name": "PANCAKE",
+    "price": 15,
+    "text": "Lorem ispem dolor sit amet consetetur displiccing elict. quisuawa, voluptatum.",
+    "image": "/images/pancake.jpg",
+    "type": "Breakfast",
+    "id": "2"
+  },
+  {
+    "name": "CAKE",
+    "price": 25,
+    "text": "Lorem ispem dolor sit amet consetetur displiccing elict. quisuawa, voluptatum.",
+    "image": "/images/cake.jpg",
+    "type": "type 3",
+    "id": "3"
+  },
+  {
+    "name": "RAMAN",
+    "price": 45,
+    "text": "Lorem ispem dolor sit amet consetetur displiccing elict. quisuawa, voluptatum.",
+    "image": "/images/raman.jpg",
+    "type": "Dinner",
+    "id": "4"
+  },
+  {
+    "name": "GRILLED CHICKEN",
+    "price": 39,
+    "text": "Lorem ispem dolor sit amet consetetur displiccing elict. quisuawa, voluptatum.",
+    "image": "/images/chicken.jpg",
+    "type": "Dinner",
+    "id": "5"
+  },
+  {
+    "name": "BOILED EGG",
+    "price": 24,
+    "text": "Lorem ispem dolor sit amet consetetur displiccing elict. quisuawa, voluptatum.",
+    "image": "/images/egg.jpg",
+    "type": "Breakfast",
+    "id": "6"
+  }
+]

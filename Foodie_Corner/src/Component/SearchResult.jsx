@@ -35,7 +35,15 @@ const FoodContainer = styled.section`
   min-height: calc(100vh - 187px);
   background-size: cover;
 `;
-const Foodcards = styled.div``;
+const Foodcards = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 32px;
+  column-gap: 22px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 18px;
+`;
 
 const Card = styled.div`
   width: 340px;
